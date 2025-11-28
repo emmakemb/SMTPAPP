@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox fx:id="mainContainer" spacing="15" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.smtpapp.EmailController" styleClass="main-container">
+    <padding>
+        <Insets top="20" right="25" bottom="20" left="25"/>
+    </padding>
+    
+    <!-- Title -->
+    <Label text="SMTP Mail Application" styleClass="title-label"/>
+    
+    <!-- SMTP Configuration Section -->
+    <TitledPane text="SMTP Configuration" expanded="true" collapsible="false" styleClass="config-pane">
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="SMTP Host:" styleClass="field-label"/>
+                    <TextField fx:id="smtpHostField" promptText="e.g., smtp.gmail.com" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="5" prefWidth="100">
+                    <Label text="Port:" styleClass="field-label"/>
+                    <TextField fx:id="smtpPortField" promptText="587" styleClass="text-field"/>
+                </VBox>
+            </HBox>
+            
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Username (Email):" styleClass="field-label"/>
+                    <TextField fx:id="usernameField" promptText="your.email@example.com" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Password:" styleClass="field-label"/>
+                    <PasswordField fx:id="passwordField" promptText="App password" styleClass="text-field"/>
+                </VBox>
+            </HBox>
+            
+            <CheckBox fx:id="tlsCheckBox" text="Use TLS/STARTTLS (Recommended)" styleClass="tls-checkbox"/>
+        </VBox>
+    </TitledPane>
+    
+    <!-- Email Composition Section -->
+    <TitledPane text="Compose Email" expanded="true" collapsible="false" VBox.vgrow="ALWAYS" styleClass="compose-pane">
+        <VBox spacing="10" VBox.vgrow="ALWAYS">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            
+            <VBox spacing="5">
+                <Label text="Recipient:" styleClass="field-label"/>
+                <TextField fx:id="recipientField" promptText="recipient@example.com" styleClass="text-field"/>
+            </VBox>
+            
+            <VBox spacing="5">
+                <Label text="Subject:" styleClass="field-label"/>
+                <TextField fx:id="subjectField" promptText="Email subject" styleClass="text-field"/>
+            </VBox>
+            
+            <VBox spacing="5" VBox.vgrow="ALWAYS">
+                <Label text="Message:" styleClass="field-label"/>
+                <TextArea fx:id="messageArea" promptText="Type your message here..." 
+                          VBox.vgrow="ALWAYS" wrapText="true" styleClass="message-area"/>
+            </VBox>
+        </VBox>
+    </TitledPane>
+    
+    <!-- Send Button and Status -->
+    <HBox spacing="15" alignment="CENTER_LEFT">
+        <Button fx:id="sendButton" text="Send Email" onAction="#handleSendEmail" 
+                styleClass="send-button" prefWidth="120" prefHeight="35"/>
+        <ProgressIndicator fx:id="progressIndicator" prefWidth="25" prefHeight="25"/>
+        <Label fx:id="statusLabel" text="" styleClass="status-label" HBox.hgrow="ALWAYS"/>
+    </HBox>
+    
+</VBox>
