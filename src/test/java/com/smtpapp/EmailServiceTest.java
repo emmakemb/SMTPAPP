@@ -31,7 +31,7 @@ class EmailServiceTest {
             "smtp.gmail.com", 
             587, 
             "test@example.com", 
-            "password123", 
+            "mock-password", 
             true
         );
         assertNotNull(service);
@@ -43,7 +43,7 @@ class EmailServiceTest {
             "localhost", 
             25, 
             "test@localhost", 
-            "password", 
+            "test-password", 
             false
         );
         assertNotNull(service);
