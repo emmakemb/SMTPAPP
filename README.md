@@ -1,0 +1,2 @@
+# SMTPAPP
+Develloping the SMTPMAILAPP
